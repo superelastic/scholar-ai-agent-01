@@ -1,0 +1,107 @@
+# Integrated Cursor Rules: Python + PocketFlow Framework
+
+## Project Context
+This project combines Python best practices with PocketFlow's agentic coding patterns.
+We maintain PocketFlow's node/flow architecture while using comprehensive Python tooling.
+
+## Development Approach
+
+### 1. Agentic Coding Steps (PocketFlow Pattern)
+1. **Requirements & Flow Design** - Start with high-level design in docs/flow-design.md
+2. **Utility Development** - Build utilities in utils/ with proper testing
+3. **Node Design** - Implement nodes following prep->exec->post pattern
+4. **Flow Implementation** - Orchestrate nodes with action-based transitions
+5. **Testing & Optimization** - Comprehensive pytest coverage and performance tuning
+
+### 2. Project Structure
+```
+main.py      # Entry point - orchestrates flows
+nodes.py     # Node definitions with prep/exec/post methods
+flow.py      # Flow logic and state management
+utils/       # One file per external service/API
+tests/       # Comprehensive pytest test suite
+```
+
+### 3. Code Style Guidelines
+
+#### Python Standards (from CLAUDE.md)
+- Type hints required for all code
+- Docstrings for public APIs
+- Line length: 88 chars maximum
+- PEP 8 naming conventions
+- Use UV for package management
+- Format with ruff, type check with pyright
+
+#### PocketFlow Patterns
+- Nodes follow `prep() -> exec() -> post()` lifecycle
+- Shared store for state management
+- Action-based flow transitions
+- Clear separation of concerns
+
+### 4. Node Development Pattern
+```python
+class ExampleNode:
+    def prep(self, store: dict) -> dict:
+        """Prepare inputs and validate preconditions"""
+        pass
+    
+    def exec(self, store: dict) -> dict:
+        """Execute main logic"""
+        pass
+    
+    def post(self, store: dict) -> dict:
+        """Post-process results and update store"""
+        pass
+```
+
+### 5. Testing Requirements
+- Write pytest tests for all nodes, flows, and utils
+- Test edge cases and error conditions
+- Mock external API calls in utils tests
+- Use anyio for async testing
+- Maintain high test coverage
+
+### 6. Utility Development
+- Place each external service/API in its own file under utils/
+- Include comprehensive error handling
+- Add pytest tests for each utility
+- Use type hints and docstrings
+
+### 7. Development Workflow
+1. Design flow in docs/flow-design.md
+2. Implement utilities with tests
+3. Build nodes with full test coverage
+4. Create flow orchestration
+5. Run full test suite: `uv run pytest`
+6. Format and lint: `uv run ruff format . && uv run ruff check .`
+7. Type check: `uv run pyright`
+
+### 8. Key Principles
+- **Modularity**: Keep nodes focused and reusable
+- **Testing**: Comprehensive test coverage required
+- **Documentation**: Clear docstrings and design docs
+- **Type Safety**: Full type annotations
+- **Error Handling**: Graceful failures with clear messages
+
+## Quick Commands
+```bash
+# Run tests
+uv run pytest
+
+# Format code
+uv run ruff format .
+
+# Lint and fix
+uv run ruff check . --fix
+
+# Type check
+uv run pyright
+
+# Run specific flow
+uv run python main.py --flow=<flow_name>
+```
+
+## References
+- Detailed Python rules: See CLAUDE.md
+- PocketFlow patterns: .mdc/pocketflow-rules.md
+- Testing strategies: .mdc/testing-rules.md
