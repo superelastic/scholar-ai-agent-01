@@ -1,0 +1,13 @@
+{
+  "references": [
+    "vaswani, a., et al. (2017). attention is all you need. neurips.",
+    "devlin, j., et al. (2018). bert: pre-training of deep bidirectional transformers. naacl.",
+    "brown, t., et al. (2020). language models are few-shot learners. neurips.",
+    "liu, y., et al. (2019). roberta: a robustly optimized bert pretraining approach. arxiv.",
+    "raffel, c., et al. (2020). exploring the limits of transfer learning with t5. jmlr."
+  ],
+  "count": 5,
+  "file_path": "/tmp/sample_paper_nznjhda6.pdf",
+  "extracted_at": "2025-06-05T12:14:30.728935",
+  "success": true
+}

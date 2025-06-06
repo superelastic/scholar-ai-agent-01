@@ -35,6 +35,9 @@ ENV/
 *.swp
 *.swo
 
+# Cursor MCP configuration with API keys
+.cursor/mcp.json
+
 # OS
 .DS_Store
 Thumbs.db
@@ -49,3 +52,24 @@ htmlcov/
 
 # UV
 .venv/
+
+# Added by Task Master AI
+logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+dev-debug.log
+# Dependency directories
+node_modules/
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+# OS specific
+# Task files
+tasks.json
+tasks/ 

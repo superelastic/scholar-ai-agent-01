@@ -53,64 +53,6 @@ task-master init
 
 npx task-master init
 
-WHen the tasks are created i want to use claude-code in a wsl ubuntu terminal window to develop the code.  so taskmaster would read the PRD and create tasks, and then claude-code would work from the defined tasks to create the code, I assume. is this correct? is this the best way to work with these tools?
-
-To establish an effective workflow combining Claude Task Master and Claude Code for Python development in Cursor IDE with WSL Ubuntu, follow this structured approach:
-
-## Integrated Workflow Architecture for AI-Driven Development
-
-### 1. Environment Configuration Strategy
-
-**Cross-Platform Setup Requirements:**
-
-- **Windows-WSL File System Mapping:**
-Store projects in `/mnt/c/...` paths for seamless access between Cursor (Windows) and WSL terminal[^7][^12]
-
-```bash
-mkdir /mnt/c/dev/python_project && cd $_
-```
-
-- **Node.js/Python Toolchain:**
-WSL requires explicit Node.js installation for Task Master CLI[^12]:
-
-```bash
-curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
-sudo apt-get install -y nodejs
-```
-
-
-### 2. Task Master Initialization Protocol
-
-**Project Scaffolding:**
-
-```bash
-# Global installation preferred for CLI access
-npm install -g task-master-ai
-task-master init --language python --framework flask
-```
-
-This creates:
-
-- `tasks/tasks.json` (structured task graph)
-- `.taskmaster/config.yaml` (project-specific settings)
-- `scripts/prd.md` (PRD template)
-
-**PRD Placement Best Practices[^1][^3]:**
-
-```text
-project_root/
-├── scripts/
-│   └── prd.md
-├── tasks/
-│   ├── tasks.json
-│   └── task_001.md
-└── src/
-    └── ... (Python code)
-```
-
-
-### 3. Task Generation Pipeline
-
 **PRD Parsing Command:**
 
 ```bash

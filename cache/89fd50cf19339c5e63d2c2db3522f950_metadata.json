@@ -1,0 +1,11 @@
+{
+  "metadata": {
+    "title": "--- Page 1 ---",
+    "authors": [],
+    "year": 2000,
+    "abstract": "The dominant sequence transduction models are based on complex recurrent or\nconvolutional neural networks that include an encoder and a decoder. The best\nperforming models also connect the encoder and decoder through an attention\nmechanism. We propose a new simple network architecture, the Transformer,\nbased solely on attention mechanisms, dispensing with recurrence and convolutions\nentirely. Experiments on two machine translation tasks show these models to\nbe superior in quality while being more parallelizable and requiring significantly\nless time to train. Our model achieves 28.4 BLEU on the WMT 2014 English-\nto-German translation task, improving over the existing best results, including\nensembles, by over 2 BLEU. On the WMT 2014 English-to-French translation task,\nour model establishes a new single-model state-of-the-art BLEU score of 41.8 after\ntraining for 3.5 days on eight GPUs, a small fraction of the training costs of the\nbest models from the literature. We show that the Transf"
+  },
+  "file_path": "C:\\Users\\fisch\\Documents\\Python_Projects\\scholar-ai-agent-01\\uploads\\1706.03762v7.pdf",
+  "extracted_at": "2025-06-06T16:11:17.453332",
+  "success": true
+}

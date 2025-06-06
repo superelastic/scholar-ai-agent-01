@@ -1,0 +1,13 @@
+{
+  "metadata": {
+    "title": "untitled",
+    "authors": [
+      "anonymous"
+    ],
+    "year": 2000,
+    "abstract": "This paper presents a comprehensive survey of deep learning techniques applied to natural language\nprocessing (NLP). We review the evolution from traditional methods to modern transformer-based architectures,\ndiscussing key innovations such as attention mechanisms, pre-training strategies, and transfer learning.\nOur analysis covers major breakthroughs including BERT, GPT, and their variants, examining their impact\non various NLP tasks including text classification, named entity recognition, and machine translation."
+  },
+  "file_path": "/tmp/sample_paper_3p8hutxa.pdf",
+  "extracted_at": "2025-06-05T12:15:07.911854",
+  "success": true
+}

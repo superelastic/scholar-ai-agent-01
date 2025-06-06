@@ -1,0 +1,94 @@
+{
+  "analysis_metadata": {
+    "format": "json",
+    "generated_at": "2025-06-06T16:27:29.409552",
+    "version": "1.0"
+  },
+  "citations": {
+    "papers": [],
+    "summary": {
+      "displayed": 0,
+      "total_found": 0
+    }
+  },
+  "paper_analysis": {
+    "analysis": {
+      "contributions": [],
+      "findings": [],
+      "key_concepts": [],
+      "limitations": [],
+      "methodology": ""
+    },
+    "metadata": {
+      "abstract": "",
+      "authors": [],
+      "doi": "",
+      "title": "",
+      "year": null
+    }
+  },
+  "processing_info": {
+    "pdf_path": "",
+    "processed_at": "",
+    "processing_time_seconds": 0,
+    "status": "completed"
+  },
+  "research_directions": {
+    "suggestions": [
+      {
+        "confidence": 0.9,
+        "description": "Apply transformer to problems in this domain",
+        "difficulty": "medium",
+        "potential_impact": "moderate",
+        "rationale": "This direction addresses a methodological gap: Limited exploration of transformer approaches",
+        "required_expertise": [],
+        "time_horizon": "medium-term",
+        "title": "Address Limited exploration of transformer approaches"
+      },
+      {
+        "confidence": 0.9,
+        "description": "Apply attention mechanism to problems in this domain",
+        "difficulty": "medium",
+        "potential_impact": "moderate",
+        "rationale": "This direction addresses a methodological gap: Limited exploration of attention mechanism approaches",
+        "required_expertise": [],
+        "time_horizon": "medium-term",
+        "title": "Address Limited exploration of attention mechanism approaches"
+      },
+      {
+        "confidence": 0.9,
+        "description": "Apply deep learning to problems in this domain",
+        "difficulty": "medium",
+        "potential_impact": "moderate",
+        "rationale": "This direction addresses a methodological gap: Limited exploration of deep learning approaches",
+        "required_expertise": [],
+        "time_horizon": "medium-term",
+        "title": "Address Limited exploration of deep learning approaches"
+      },
+      {
+        "confidence": 0.7,
+        "description": "Investigate applications and adaptations for healthcare",
+        "difficulty": "medium",
+        "potential_impact": "moderate",
+        "rationale": "This direction addresses a application gap: Underexplored applications in healthcare",
+        "required_expertise": [],
+        "time_horizon": "medium-term",
+        "title": "Address Underexplored applications in healthcare"
+      },
+      {
+        "confidence": 0.7,
+        "description": "Investigate applications and adaptations for education",
+        "difficulty": "medium",
+        "potential_impact": "moderate",
+        "rationale": "This direction addresses a application gap: Underexplored applications in education",
+        "required_expertise": [],
+        "time_horizon": "medium-term",
+        "title": "Address Underexplored applications in education"
+      }
+    ],
+    "summary": {
+      "avg_confidence": 0.82,
+      "total_suggestions": 5
+    }
+  }
+}

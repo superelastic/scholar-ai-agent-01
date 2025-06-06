@@ -1,0 +1,26 @@
+{
+  "export_metadata": {
+    "export_name": "170603762v7",
+    "created_at": "2025-06-06T16:27:29.409536",
+    "formats": [
+      "json",
+      "markdown"
+    ],
+    "files": {
+      "json": "test_results/170603762v7_20250606_162729/170603762v7.json",
+      "markdown": "test_results/170603762v7_20250606_162729/170603762v7.md"
+    }
+  },
+  "paper_metadata": {},
+  "analysis_summary": {
+    "key_concepts_count": 0,
+    "citations_count": 0,
+    "research_directions_count": 5,
+    "processing_time": null
+  },
+  "export_info": {
+    "total_files": 2,
+    "export_directory": "test_results/170603762v7_20250606_162729",
+    "created_by": "Scholar AI Agent System"
+  }
+}

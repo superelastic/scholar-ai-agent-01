@@ -1,0 +1,21 @@
+{
+  "references": [
+    "jimmy lei ba, jamie ryan kiros, and geoffrey e hinton. layer normalization. arxiv preprint\narxiv:1607.06450, 2016.",
+    "dzmitry bahdanau, kyunghyun cho, and yoshua bengio. neural machine translation by jointly\nlearning to align and translate. corr, abs/1409.0473, 2014.",
+    "denny britz, anna goldie, minh-thang luong, and quoc v . le. massive exploration of neural\nmachine translation architectures. corr, abs/1703.03906, 2017.",
+    "jianpeng cheng, li dong, and mirella lapata. long short-term memory-networks for machine\nreading. arxiv preprint arxiv:1601.06733, 2016.\n10\n\n--- page 11 ---",
+    "kyunghyun cho, bart van merrienboer, caglar gulcehre, fethi bougares, holger schwenk,\nand yoshua bengio. learning phrase representations using rnn encoder-decoder for statistical\nmachine translation. corr, abs/1406.1078, 2014.",
+    "francois chollet. xception: deep learning with depthwise separable convolutions. arxiv\npreprint arxiv:1610.02357, 2016.",
+    "junyoung chung, \u00e7aglar g\u00fcl\u00e7ehre, kyunghyun cho, and yoshua bengio. empirical evaluation\nof gated recurrent neural networks on sequence modeling. corr, abs/1412.3555, 2014.",
+    "chris dyer, adhiguna kuncoro, miguel ballesteros, and noah a. smith. recurrent neural\nnetwork grammars. in proc. of naacl, 2016.",
+    "jonas gehring, michael auli, david grangier, denis yarats, and yann n. dauphin. convolu-\ntional sequence to sequence learning. arxiv preprint arxiv:1705.03122v2, 2017.",
+    "alex graves. generating sequences with recurrent neural networks. arxiv preprint\narxiv:1308.0850, 2013.",
+    "kaiming he, xiangyu zhang, shaoqing ren, and jian sun. deep residual learning for im-\nage recognition. in proceedings of the ieee conference on computer vision and pattern\nrecognition, pages 770\u2013778, 2016.",
+    "sepp hochreiter, yoshua bengio, paolo frasconi, and j\u00fcrgen schmidhuber. gradient flow in\nrecurrent nets: the difficulty of learning long-term dependencies, 2001.",
+    "sepp hochreiter and j\u00fcrgen schmidhuber. long short-term memory. neural computati"
+  ],
+  "count": 13,
+  "file_path": "C:\\Users\\fisch\\Documents\\Python_Projects\\scholar-ai-agent-01\\uploads\\1706.03762v7.pdf",
+  "extracted_at": "2025-06-06T16:11:17.472899",
+  "success": true
+}

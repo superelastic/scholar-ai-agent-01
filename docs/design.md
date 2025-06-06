@@ -1,135 +1,276 @@
-# Product Requirements Document
+# Product Requirements Document - Citation-Based API Design
 
 ## Project Overview
-**Project Name:** claude-pocketflow  
-**Type:** Template/Framework  
-**Purpose:** Enable rapid development of agentic applications using AI-assisted coding tools
+**Project Name:** Scholar AI Agent  
+**Type:** Academic Research Tool  
+**Purpose:** AI-powered academic research assistant that analyzes papers through citation metadata, discovers citing works with abstracts, and suggests future research directions using academic APIs
 
 ## Product Vision
-Create a standardized template that combines PocketFlow's agentic architecture with professional Python development practices, optimized for AI-assisted development using Cursor, Claude-Code, and Task-Master.
+Create an intelligent academic research tool using PocketFlow's agentic architecture that helps researchers understand papers, discover citations with full abstracts, and identify promising research directions through API-based analysis and a coordinated multi-agent system.
+
+## 🔄 Major Design Change
+**From**: PDF upload and parsing approach  
+**To**: Citation-based API approach with abstract analysis  
+**Rationale**: Improved reliability, structured data access, and richer citation context through abstracts
 
 ## User Stories
 
+### As a Researcher
+1. I want to provide citation information (title, authors, year) and receive comprehensive analysis
+2. I want to discover papers that cite my work with full abstract analysis
+3. I want to see what references my paper cites (bibliography analysis)
+4. I want AI-generated research directions based on abstract-level understanding
+5. I want the analysis presented in a clear, structured format with export options
+
 ### As a Developer
-1. I want to quickly create new agentic applications without setting up boilerplate
-2. I want clear patterns for implementing nodes and flows
-3. I want comprehensive testing built into the workflow
-4. I want AI assistants to understand my project structure
+1. I want to implement the three-agent system using reliable APIs
+2. I want structured JSON responses instead of HTML parsing
+3. I want robust error handling for API failures
+4. I want comprehensive testing without PDF parsing complexity
 
 ### As an AI Assistant
-1. I need clear rules and patterns to follow when generating code
-2. I need to understand the project structure and conventions
-3. I need to know where to place different types of code
-4. I need testing requirements to ensure code quality
+1. I need clear patterns for API integration and data aggregation
+2. I need to understand multi-API coordination strategies
+3. I need abstract analysis patterns for research synthesis
+4. I need testing approaches for API-based workflows
 
 ## Functional Requirements
 
-### Core Framework
-1. **Node System**
-   - Implement three-phase lifecycle (prep, exec, post)
-   - Support both sync and async operations
-   - Provide clear error handling patterns
-   - Enable state sharing through store
+### Academic Research System Architecture
 
-2. **Flow System**
-   - Action-based transitions between nodes
-   - Support for conditional branching
-   - Error recovery paths
-   - Flow composition and reusability
+1. **Agent System Design**
+   - **Academic Coordinator Agent**: Main orchestrator managing the research workflow
+   - **Academic Web Search Agent**: Specialized for finding citing papers via APIs with abstract retrieval
+   - **Academic New Research Agent**: Synthesizes abstracts and metadata to suggest research directions
 
-3. **Utility Layer**
-   - Standardized pattern for external service integration
-   - Built-in retry and circuit breaker support
-   - Connection pooling and resource management
-   - Comprehensive error handling
+2. **Node Architecture**
+   
+   **Coordinator Flow Nodes:**
+   - `UserInputNode`: Receives citation info (title, authors, year, DOI optional)
+   - `PaperIdentificationNode`: Uses APIs to find and verify the paper
+   - `MetadataEnrichmentNode`: Gathers comprehensive metadata from multiple APIs
+   - `CitationSearchNode`: Delegates to Web Search Agent for citations
+   - `ReferenceSearchNode`: Retrieves papers referenced by the target paper
+   - `ResearchSynthesisNode`: Delegates to Research Agent for future directions
+   - `PresentationNode`: Formats and presents all results to user
+   
+   **Web Search Flow Nodes:**
+   - `APIQueryNode`: Formulates API queries for multiple services
+   - `SerpAPINode`: Interfaces with SerpAPI for Google Scholar data
+   - `SemanticScholarNode`: Gets additional metadata and references
+   - `AbstractAnalysisNode`: Extracts key information from abstracts using LLM
+   - `CitationEnrichmentNode`: Combines data from multiple sources
+   
+   **Research Synthesis Flow Nodes:**
+   - `AbstractSynthesisNode`: Analyzes abstracts of citing papers
+   - `TrendAnalysisNode`: Identifies research trends from abstract content
+   - `GapIdentificationNode`: Finds gaps mentioned in abstracts
+   - `DirectionGeneratorNode`: Proposes research based on abstract analysis
+   - `SuggestionFormatterNode`: Formats suggestions with evidence
 
-### Development Tools
-1. **Testing Framework**
-   - Pytest integration with fixtures
-   - Node-level unit testing utilities
-   - Flow-level integration testing
-   - Mock utilities for external services
+3. **API Integration Strategy**
+   
+   **Primary APIs:**
+   - **SerpAPI**: Google Scholar search, citations, abstracts
+   - **Semantic Scholar API**: References, detailed metadata, citation contexts
+   - **CrossRef API**: DOI resolution, additional metadata
+   - **OpenAlex API**: Comprehensive academic database (backup)
+   
+   **Data Flow:**
+   ```
+   User Input → Paper Identification → Multi-API Enrichment → Analysis
+       ↓              ↓                      ↓                  ↓
+   Title/Author    SerpAPI            Semantic Scholar      LLM Analysis
+   Year/DOI        Find paper         Get references        of abstracts
+                   Get citations      Get contexts
+   ```
 
-2. **Code Quality**
-   - Ruff for formatting and linting
-   - Pyright for type checking
-   - Pre-commit hooks
-   - Comprehensive type hints
+4. **State Management**
+   - **Paper Store**: Verified metadata, abstract, key concepts
+   - **Citation Store**: Citing papers with full abstracts, relevance scores
+   - **Reference Store**: Papers cited by target work with abstracts
+   - **Analysis Store**: Extracted concepts, trends, gaps from abstracts
+   - **Research Store**: Suggested directions with abstract-based evidence
 
-3. **Documentation**
-   - Auto-generated API documentation
-   - Example implementations
-   - Developer guides
-   - Architecture documentation
+### Technical Components
+
+1. **External Integrations**
+   - **SerpAPI**: Primary citation search with abstracts (requires API key)
+   - **Semantic Scholar API**: References and detailed metadata (free tier)
+   - **CrossRef API**: DOI-based metadata (free)
+   - **OpenAlex API**: Backup data source (free)
+   - **LLM Integration**: Abstract analysis and synthesis
+
+2. **Utility Services**
+   - `CitationResolverUtility`: Multi-API paper identification
+   - `AbstractAnalysisUtility`: LLM-based abstract information extraction
+   - `APIAggregatorUtility`: Combines data from multiple sources
+   - `ResearchSynthesisUtility`: Analyzes patterns across abstracts
+   - `FormatterUtility`: Consistent output formatting
+
+3. **Abstract Analysis Prompts**
+   - **Concept Extraction**: Extract key concepts, methods, findings from abstract
+   - **Gap Analysis**: Identify limitations and future work mentioned
+   - **Methodology Extraction**: Understand approaches used
+   - **Trend Synthesis**: Find patterns across multiple abstracts
+   - **Direction Generation**: Propose research based on abstract evidence
+
+### Data Enrichment Strategy
+
+1. **From User Input to Rich Data**
+   ```
+   Input: "Attention is All You Need, Vaswani et al., 2017"
+   ↓
+   Step 1: SerpAPI finds paper + cluster ID
+   Step 2: Get 20+ citing papers with abstracts
+   Step 3: Semantic Scholar gets references + contexts  
+   Step 4: LLM analyzes all abstracts for patterns
+   Step 5: Generate research directions with evidence
+   ```
+
+2. **Abstract-Based Analysis Benefits**
+   - Understand WHY papers cited the work
+   - Identify specific techniques and improvements
+   - Find mentioned limitations and challenges
+   - Track methodology evolution
+   - Generate evidence-based suggestions
 
 ## Non-Functional Requirements
 
 ### Performance
-- Nodes should execute in under 100ms for simple operations
-- Support for async operations to prevent blocking
-- Efficient store management to minimize memory usage
-- Lazy loading of utilities
+- API response aggregation within 5 seconds per source
+- LLM abstract analysis: 2-3 seconds per abstract
+- Total workflow completion: under 45 seconds
+- Parallel API calls where possible
 
 ### Reliability
-- Graceful error handling at all levels
-- Retry mechanisms for transient failures
-- Circuit breakers for external services
-- Comprehensive logging for debugging
+- Fallback to alternate APIs if primary fails
+- Cache API responses for 7 days
+- Graceful degradation if some APIs unavailable
+- Retry logic with exponential backoff
 
-### Maintainability
-- Clear separation of concerns
-- Consistent coding patterns
-- Comprehensive test coverage (>80%)
-- Well-documented codebase
+### Cost Management
+- Use free tiers where available
+- Cache aggressively to minimize API calls
+- Batch abstract analysis for efficiency
+- Monitor API usage limits
 
-### Developer Experience
-- Quick setup (<5 minutes)
-- Clear examples and templates
-- Helpful error messages
-- AI-friendly documentation structure
+### User Experience
+- Real-time progress updates as APIs respond
+- Clear indication of data sources
+- Export results with full abstract context
+- Highlight insights derived from abstracts
 
 ## Acceptance Criteria
 
-### Project Setup
-- [ ] Developer can set up new project in under 5 minutes
-- [ ] All dependencies install correctly with `uv sync`
-- [ ] Basic example runs with `python main.py`
-- [ ] Tests pass with `uv run pytest`
+### Core Functionality
+- [ ] User can input citation info and get analysis within 45 seconds
+- [ ] System retrieves 10+ citing papers with abstracts
+- [ ] System retrieves referenced papers when available
+- [ ] Abstract analysis provides specific insights
+- [ ] Research suggestions include evidence from abstracts
 
-### Node Development
-- [ ] Developer can create new node following template
-- [ ] Node tests can be written easily
-- [ ] Error handling works as expected
-- [ ] Type hints provide good IDE support
+### API Integration
+- [ ] Multi-API coordination works seamlessly
+- [ ] Fallback mechanisms handle API failures
+- [ ] Data deduplication across sources works correctly
+- [ ] Abstract extraction is reliable
+- [ ] Rate limiting prevents API blocks
 
-### Flow Development
-- [ ] Developer can compose nodes into flows
-- [ ] Transitions work correctly based on actions
-- [ ] Error paths handle failures gracefully
-- [ ] Flow state is maintained correctly
-
-### AI Assistant Integration
-- [ ] Cursor understands project structure via .cursorrules
-- [ ] Claude-Code can navigate project via CLAUDE.md
-- [ ] Task-Master can decompose requirements effectively
-- [ ] Generated code follows project patterns
-
-### Code Quality
-- [ ] All code passes ruff formatting
-- [ ] All code passes pyright type checking
-- [ ] Test coverage exceeds 80%
-- [ ] Documentation is complete and accurate
+### Abstract Analysis Quality
+- [ ] Key concepts extracted accurately from abstracts
+- [ ] Limitations and gaps identified correctly
+- [ ] Methodology patterns recognized
+- [ ] Trends synthesized across multiple abstracts
+- [ ] Research directions cite specific abstract evidence
 
 ## Success Metrics
-1. Time to create first working node: <30 minutes
-2. Time to create first working flow: <1 hour
-3. Test coverage: >80%
-4. AI-generated code acceptance rate: >90%
-5. Developer satisfaction: High
+1. Paper identification accuracy: >95%
+2. Abstract retrieval rate: >80% of citations
+3. Research suggestion quality: Evidence-based with abstract citations
+4. API reliability: <5% failure rate with fallbacks
+5. User satisfaction: >4.5/5 rating
+
+## Data Structure Updates
+
+### Enhanced Citation Structure
+```python
+{
+    "citing_papers": List[{
+        "title": str,
+        "authors": List[str],
+        "year": int,
+        "venue": str,
+        "url": str,
+        "abstract": str,  # NEW: Full abstract
+        "abstract_analysis": {  # NEW: LLM analysis
+            "key_concepts": List[str],
+            "methodology": str,
+            "findings": List[str],
+            "limitations": List[str],
+            "future_work": List[str]
+        },
+        "relevance_score": float,
+        "citation_context": str  # NEW: How it cites
+    }],
+    "total_found": int,
+    "sources": List[str]  # APIs used
+}
+```
+
+### Research Suggestion Structure
+```python
+{
+    "suggestions": List[{
+        "title": str,
+        "description": str,
+        "rationale": str,
+        "confidence": float,
+        "evidence_from_abstracts": List[{  # NEW
+            "paper_title": str,
+            "relevant_quote": str,
+            "insight_type": str  # gap/method/trend
+        }],
+        "methodology_hints": List[str],  # NEW
+        "potential_impact": str
+    }],
+    "trend_summary": Dict,  # NEW: Aggregated trends
+    "gap_analysis": Dict    # NEW: Common gaps found
+}
+```
+
+## Implementation Changes
+
+### Removed Components
+- PDF upload and parsing functionality
+- PDFExtractorUtility
+- File upload handling
+- PDF validation logic
+
+### New Components
+- Citation input form/API endpoint
+- Multi-API orchestration logic
+- Abstract analysis pipeline
+- API response caching layer
+- Enhanced research synthesis with abstract evidence
+
+### Modified Components
+- UserInputNode → accepts citation info instead of PDF
+- PaperAnalysisNode → uses API metadata instead of extracted text
+- CitationSearchNode → enhanced with abstract retrieval
+- ResearchSynthesisNode → analyzes abstracts instead of just metadata
+
+## Migration Strategy
+
+1. **Phase 1**: Add API integration alongside PDF support
+2. **Phase 2**: Implement abstract analysis features
+3. **Phase 3**: Migrate UI to citation-based input
+4. **Phase 4**: Deprecate PDF parsing (keep as optional)
 
 ## Future Enhancements
-1. Web UI for flow visualization
-2. Additional node templates for common patterns
-3. Integration with more external services
-4. Performance monitoring dashboard
-5. Deployment templates for various platforms
+1. Full-text analysis when available via APIs
+2. Citation network visualization with abstract snippets
+3. Trend tracking over time windows
+4. Collaborative annotation of abstracts
+5. API for programmatic access
+6. Multi-language abstract support
